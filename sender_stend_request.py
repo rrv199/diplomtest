@@ -12,10 +12,7 @@ def post_log_courier(log_courier_body):
                          json=log_courier_body,
                          headers=data.headers)
 
-def post_new_order(order_body):
-    return requests.post(configuration.URL_SERVICE + configuration.CREATE_ORDER,
-                         json=order_body,
-                         headers=data.headers)
+
 def post_new_order(order_body):
     return requests.post(configuration.URL_SERVICE + configuration.CREATE_ORDER,
                          json=order_body,

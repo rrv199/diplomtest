@@ -38,12 +38,17 @@ scooter_rent=# \dt+
 scooter_rent=# SELECT * FROM "Orders";
  id | courierId | firstName | lastName | address | metroStation | phone | rentTime | deliveryDate | track | inDelivery | color | comment | cancelled | finished | createdAt | updatedAt
 ----+-----------+-----------+----------+---------+--------------+-------+----------+--------------+-------+------------+-------+---------+-----------+----------+-----------+-----------
+scooter_rent=# SELECT * FROM "Couriers";
+ id | login | passwordHash | firstName | createdAt | updatedAt
+----+-------+--------------+-----------+-----------+-----------
 (0 rows)
-scooter_rent=# SELECT "courierId" FROM "Orders" WHERE "inDelivery" = true;
- courierId
+
+SELECT co.login FROM "Couriers" AS co WHERE or."inDelivery" = true LEFT JOIN "Orders" AS or ON or.id = co.id
+login
 -----------
 (0 rows)
-scooter_rent=# SELECT "id", CASE WHEN finished == true THEN "2", WHEN canсelled == true THEN "-1", WHEN inDelivery == true THEN "1" END, FROM "Orders";
-id
+scooter_rent=# SELECT "track", CASE WHEN finished == true THEN "2", WHEN canсelled == true THEN "-1", WHEN inDelivery == true THEN "1" END, FROM "Orders";
+track
 -----------
 (0 rows)
+
